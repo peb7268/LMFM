@@ -3,12 +3,17 @@ var express        	= require('express');
 var app            	= express();
 var bodyParser     	= require('body-parser');
 var methodOverride 	= require('method-override');
+var mongoose 		= require('mongoose');
 var db 				= require('./config/db');
 
-var port = process.env.PORT || 8080; 
+var Activity = require('./app/models/activity');
+
+var routes   = require('./app/routes');
+
+var port = process.env.PORT || 3000; 
 
 //Connect to mongoDB
-//mongoose.connect(db.url); 
+mongoose.connect(db.url); 
 
 //Middleware
 app.use(bodyParser.json()); 
