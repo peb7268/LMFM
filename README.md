@@ -7,7 +7,8 @@ As I created it though, I thought, if im going to be reinventing the wheel anywa
 So this project will be an implementation focusing on several key things.  
 
 1. Current Technologies ( browserSync, socket.io, ect.. )
-2. Swappable Template Engines
-3. Horizontal application structure
+2. Gulp for builds: Extendable Gulp structure
+3. Swappable Template Engines
+4. Horizontal application structure
 
 ** *Note this project is a work in progress* **
