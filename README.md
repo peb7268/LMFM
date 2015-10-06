@@ -10,4 +10,4 @@ So this project will be an implementation focusing on several key things.
 2. Swappable Template Engines
 3. Horizontal application structure
 
-**Note this project is a work in progress**
+** *Note this project is a work in progress* **
