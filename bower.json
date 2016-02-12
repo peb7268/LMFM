@@ -1,0 +1,20 @@
+{
+  "name": "id-mean",
+  "version": "0.0.0",
+  "authors": [
+    "peb7268 <peb7268@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "vendors",
+    "test",
+    "tests"
+  ]
+}
