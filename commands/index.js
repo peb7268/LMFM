@@ -1,20 +1,14 @@
 #! /usr/bin/env node
-
 var program = require('commander');
 
-
 program
+.version('0.0.1')
 .description('Kick Ass development without sucking.')
 .usage('<command>')
-.version('0.0.1');
 
 program
-.command('start <stack>')
-.description('start a project with a specific stack')
-.option("-L, --load_deps <bool>", "Load the dependencies or not")
-.action(function(stack, options){
-	console.log('starting "%s" loading deps %s ', stack, options.load_deps);
-}).on('--help', function() {
+.command('start <stack>', 'start a project with a specific stack', start)
+.on('--help', function() {
 	console.log('  Examples:');
 	console.log();
 	console.log('    $ start mean');
@@ -27,10 +21,7 @@ program
 ** These will be the configuration options that define the setup that the app uses.
 ** these can be a collection of recipies or a predefined config file.
 */
-program
-.command('define [recipe]')
-.description('describe a configuration option')
-
+program.command('define [recipe]', 'describe a configuration option');
 
 
 /*
@@ -38,10 +29,20 @@ program
 ** Will depend on which recipies we have used to configure our 'framework'
 */
 program
-.command('generate [asset]', 'generate an asset')
-.description('Generate an asset')
+.command('generate [asset]', 'Generate an asset', generate)
 .parse(process.argv);
 
+function start(stack, options){
+	console.log('starting a ', stack, 'with ', options);
+}
+
+function define(recipe){
+	console.log('define a recipe');
+}
+
+function generate(asset){
+	console.log('generating asset: ', asset)
+}
 
 // .option('-u, --username <username>', 'The user to authenticate as')
 // .option('-p, --password <password>', 'The user\'s password')

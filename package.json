@@ -5,7 +5,7 @@
   "main": "server.js",
   "preferGlobal": true,
   "bin": {
-    "LMFM": "index.js"
+    "LMFM": "commands/index.js"
   },
   "scripts": {
     "start": "DEBUG=* nodemon server",
