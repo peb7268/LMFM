@@ -6,51 +6,13 @@ program
 .description('Kick Ass development without sucking.')
 .usage('<command>')
 
-program
-.command('start <stack>', 'start a project with a specific stack', start)
-.on('--help', function() {
-	console.log('  Examples:');
-	console.log();
-	console.log('    $ start mean');
-	console.log('    $ start mean -L true');
-	console.log();
-});
-
-
 /*
-** These will be the configuration options that define the setup that the app uses.
-** these can be a collection of recipies or a predefined config file.
+** Look in the commands folder for the corresponding command
 */
-program.command('define [recipe]', 'describe a configuration option');
-
-
-/*
-** An asset can be a model, a controller, a view, or a package. This
-** Will depend on which recipies we have used to configure our 'framework'
-*/
-program
-.command('generate [asset]', 'Generate an asset', generate)
+.command('start <stack>', 'start a project with a specific stack')
+.command('define [recipe]', 'describe a configuration option')
+.command('generate [asset]', 'Generate an asset')
 .parse(process.argv);
-
-function start(stack, options){
-	console.log('starting a ', stack, 'with ', options);
-}
-
-function define(recipe){
-	console.log('define a recipe');
-}
-
-function generate(asset){
-	console.log('generating asset: ', asset)
-}
-
-// .option('-u, --username <username>', 'The user to authenticate as')
-// .option('-p, --password <password>', 'The user\'s password')
-// .action(function(file) {
-//   console.log('user: %s pass: %s file: %s',
-//       program.username, program.password, file);
-// })
-
 
 // var exec 	= require('child_process').exec;
 // var fs 		= require('fs');

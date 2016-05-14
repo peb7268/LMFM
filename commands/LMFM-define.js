@@ -1,6 +1,7 @@
 #! /usr/bin/env node
 var program = require('commander');
 
+
 /*
 ** These will be the configuration options that define the setup that the app uses.
 ** these can be a collection of recipies or a predefined config file.
@@ -10,10 +11,8 @@ program
 	.usage('<recipe> [composeables]')
 	.option('-L, --load_deps', 'load recipe dependencies')
 	.action(function(recipe, composeables){
-		console.log('recipe: ', recipe);
-		if(composeables.length > 0){
-			console.log('composeables: ', composeables);
-		}
+		console.log('defining a', recipe, 'recipe');
+		if(composeables.length > 0) console.log('composeables: ', composeables);
 	}).on('--help', function(){
 		console.log('  Examples:');
 		console.log('');
@@ -23,8 +22,9 @@ program
 	})
 .parse(process.argv);
 
-if(program.load_deps) loadDeps(program.load_deps);
 
+
+if(program.load_deps) loadDeps(program.load_deps);
 function loadDeps(deps){
 	console.log('loading deps: ', deps)
 }
