@@ -22,6 +22,9 @@ var Packages 	 = function(app, packagesPath, config){
 		}
 	};
 
+	/*
+	* Returns an object map of the packages
+	*/
 	this.getList = function(dir) { 
 		var dirList  = {};
 		var files 	 = fs.readdirSync(dir);
