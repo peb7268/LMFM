@@ -27,3 +27,5 @@ if(program.handle_option) handleOption(program.handle_option);
 function handleOption(option){
 	console.log('some option example: ', option)
 }
+
+if (!program.args.length) program.help();

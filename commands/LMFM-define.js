@@ -28,3 +28,5 @@ if(program.load_deps) loadDeps(program.load_deps);
 function loadDeps(deps){
 	console.log('loading deps: ', deps)
 }
+
+if (!program.args.length) program.help();
