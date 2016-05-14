@@ -7,10 +7,12 @@ var program = require('commander');
 */
 program
 	.usage('<asset> [load_deps]')
-	.description('Start a stack from a predefined config')
+	.description('Generates an asset')
 	.option('-L, --load_deps', 'load recipe dependencies')
-	.action(function(asset){
-		console.log('generating asset: ', asset)
+	.option('-p, --package_name', 'specify a package name')
+	.action(function(asset, package_name){
+		console.log('generating asset: ', asset);
+		if(asset == 'package') generatePackage(package_name);
 	})
 	.on('--help', function() {
 		console.log('  Examples:');
@@ -26,6 +28,33 @@ program
 if(program.handle_option) handleOption(program.handle_option);
 function handleOption(option){
 	console.log('some option example: ', option)
+}
+
+function generatePackage(packageName){
+	console.log('creating package: ', packageName);
+	return;
+
+	//TODO:This doesnt work yet, need to add the deps back in or actually pull it from NPM
+	exec('git clone https://github.com/peb7268/LMFM-Package.git ' + packagePath, function(err){
+		if(err) {
+			console.log(err); 
+			return;
+		}
+		
+		console.log('writing file to: ', packagePath + '/packageB.json');
+		var config = {
+		  "name": packageName,
+		  "version": "1.0.0",
+		  "description": "LMFM example package"
+		};
+		
+		fs.writeFile(packagePath + '/package.json', JSON.stringify(config), function(err){
+			if(err) {
+				return console.error(err);
+			}
+			console.log("Data written successfully!");
+		});
+	});
 }
 
 if (!program.args.length) program.help();
