@@ -8,7 +8,7 @@
     "LMFM": "commands/index.js"
   },
   "scripts": {
-    "start": "DEBUG=* nodemon server",
+    "start": "nodemon server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

@@ -1,0 +1,7 @@
+{
+	"app_port" : 3000,
+	"packages" : {
+		"order": ["users", "activities"], 
+		"path" : "/packages"
+	}
+}

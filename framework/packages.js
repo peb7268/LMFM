@@ -8,11 +8,22 @@ var fs 			 = require('fs');
 var path 	 	 = require('path');
 var util 		 = require('util');
 
-var Packages 	 = function(app, packagesPath, config){
-	this.dir 	 = packagesPath;
+var Packages 	 = function(app, config){
+	var package_order  	= config.packages.order;
+	var package_path 	= __dirname + '/..' + config.packages.path;
+	
+	this.dir 	 = package_path;
 	this.init 	 = function(config){
-		this.getList(packagesPath);
-		for(packageName in this.list){
+		this.getList(config);	//Refactoring so it loads the packages in order
+
+		for(orderIdx in this.list.order){
+			var packageName = this.list.order[orderIdx];
+			console.log('packageName: ' + packageName);
+			// console.log("this.list: \n");
+			// console.log(this.list);
+			// console.log('packageName: ' + packageName);
+
+
 			var module 	= require(this.list[packageName].path + '/app.js');
 			var package = module.instance;
 			var router  = module.router;
@@ -25,10 +36,11 @@ var Packages 	 = function(app, packagesPath, config){
 	/*
 	* Returns an object map of the packages
 	*/
-	this.getList = function(dir) { 
-		var dirList  = {};
-		var files 	 = fs.readdirSync(dir);
-		var self     = this;
+	this.getList = function(config) { 
+		var dirList  		= {};
+		var files 	 		= fs.readdirSync(dir);
+		var self     		= this;
+		self.package_order 	= config.packages.order;
 
 		files.map(function (file) {
 	        return path.join(self.dir, file);
@@ -43,7 +55,9 @@ var Packages 	 = function(app, packagesPath, config){
 	        
 	        dirList[packageName] = pkg;
 	    });	
-	    this.list = dirList;
+
+	    this.list 		= dirList;
+	    this.list.order = self.package_order; 
 	}
 
 	this.init(config);

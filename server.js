@@ -1,3 +1,4 @@
+var config 			= require(__dirname + '/config/config.json');
 
 var express        	= require('express');
 var app            	= express();
@@ -6,7 +7,7 @@ var bodyParser     	= require('body-parser');
 var methodOverride 	= require('method-override');
 
 var util 			= require('util');
-var port 			= process.env.PORT || 3000; 
+var port 			= process.env.PORT || config.app_port;
 
 //Middleware
 app.use(bodyParser.json()); 
@@ -18,6 +19,6 @@ app.listen(port);               												//Start our app at http://localhost:
 console.log('app listening on port: ' + port);
 
 //Loads All of the packages
-require('./framework/packages')(app, __dirname + '/packages');
+require('./framework/packages')(app, config);
 
 module.exports = app; 
