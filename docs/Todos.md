@@ -15,3 +15,7 @@ next task: 	  css preprocessor config
 - If in dev use charlatan
 - LT: Integrate Passport
 - LT: Make FE MVC switchable to react, polymer w/e
+
+
+** Create 2 main branches **
+1 for platform release and 1 for product development
