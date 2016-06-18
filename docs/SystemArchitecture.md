@@ -10,6 +10,7 @@ The LMFM stack is started by running ```npm start```. It uses one file, ```serve
 	- css preprocessors
 	- css paths
 	- password protected advanced options ( changing the package.json / bower.json files via the UI)
-	
+
 - Overrideable by packages
-- Each package configs are viewable and configurable via a UI. 
+- Each package configs are viewable and configurable via a UI.
+- LMFM CLI to create new packages, add users, ect..
