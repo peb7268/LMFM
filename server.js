@@ -22,4 +22,14 @@ console.log('app listening on port: ' + port);
 //Loads All of the packages
 require('./framework/packages')(app, config);
 
+var engine 		= config.views.engine;
+var viewPath 	= config.views.path; 
+app.set('view engine', config.views.engine);
+app.set('views', viewPath);
+
+//Index Route
+app.get('/', function(req, res, next){
+	res.render(__dirname + '/index.pug', {});
+});
+
 module.exports = app; 

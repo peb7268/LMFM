@@ -4,5 +4,9 @@
 	"packages"  : {
 		"order" : ["users", "activities"], 
 		"path"  : "/packages"
+	},
+	"views"		: {
+		"engine":"pug",
+		"path"	: []
 	}
 }

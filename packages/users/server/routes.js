@@ -6,7 +6,8 @@ function routes(self){
     router = express.Router();
     router.route('/')
     .get(function(req, res){
-        res.send(self._name + ' routes file');
+        // res.send(self._name + ' routes file');
+        res.render('index');
     });
 
     return router;
