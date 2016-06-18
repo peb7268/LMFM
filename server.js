@@ -1,4 +1,5 @@
 var config 			= require(__dirname + '/config/config.json');
+config.db 		    = require(__dirname + '/config/db');
 
 var express        	= require('express');
 var app            	= express();

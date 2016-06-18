@@ -10,20 +10,21 @@ So this project will be an implementation focusing on several key things.
 2. Gulp for builds: Extendable Gulp structure
 3. Swappable Template Engines
 4. Horizontal application structure
+5. Fine grained control of package loading order
+6. App mode ( debug, dev, production )
+7. Central config for things like template engines, CSS preprocessors, app level technologies & 
+   settings. These settings should be overrideable by packages.
+8. Each package is self contained.
 
-####The Example Project: Social Fitness Tracker
-Track meals, activities, good life choices and friends.
+###Next Steps:
+- Create a db interface for each module by extending the dbResource / Mongoose in each package 
+  instance. See more on DB proposed behavior in the docs folder / Models.
+- Update the LMFM package repo to use the new structure.
+- Verify that the Package inheritance is done as efficiently as possible.
+
+###To see more on how things work consult the docs folder.
 
 ** *Note this project is a work in progress* **
 
-Got a question, writing my own MEAN stack to use for all projects going forward. 
-Mounted sub packages into my main express instance. I then set static routes in those packages
-to serve some static views, but for some reason none of my static files are working. I dont think its 
-recognizing my mount path correctly.
 
-Main express is in server.js. The app then uses framework/packages.js to load all of the packages that are in the packages folder and then initialize them. 
-
-https://github.com/peb7268/LMFM
-
-
-To Start this baby up just do npm start
+To Start this baby up just do ```npm start```

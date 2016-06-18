@@ -3,10 +3,9 @@
 ** This file aggregates / registers and attatches all of the packages to the main 
 ** Express instance. 
 */
-
 var fs 			 = require('fs');
 var path 	 	 = require('path');
-var util 		 = require('util');
+
 
 var Packages 	 = function(app, config){
 	var package_order  	= config.packages.order;
@@ -18,17 +17,13 @@ var Packages 	 = function(app, config){
 
 		for(orderIdx in this.list.order){
 			var packageName = this.list.order[orderIdx];
-			console.log('packageName: ' + packageName);
-			// console.log("this.list: \n");
-			// console.log(this.list);
-			// console.log('packageName: ' + packageName);
-
 
 			var module 	= require(this.list[packageName].path + '/app.js');
 			var package = module.instance;
-			var router  = module.router;
+			package.augmentConfig(config);
 			
 			//Mount the package routes to the main app routes
+			var router  = module.router;
 			app.use('/' + package._name, module.router);
 		}
 	};

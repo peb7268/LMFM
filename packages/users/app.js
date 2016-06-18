@@ -4,28 +4,36 @@
 ** so it can be generated from the command line instead of hard coded.
 */
 
+var Package 	 	= require(__dirname + '/../../framework/Package');
 var fs 				= require("fs");
-var config 			= JSON.parse(fs.readFileSync(__dirname + "/package.json"));
-var util 			= require('util');
+var pkg_config 		= JSON.parse(fs.readFileSync(__dirname + "/package.json"));
 var router;
-console.log('Routes: ');
-console.log(router);
 
-var Users = function(){
+var Users = function(pkg_config){
 	router 			= require('./server/routes')(this);
-	var dbResource	= require('./../../config/db');
-	this.db 		= dbResource.db;
-	this.mongoose 	= dbResource.mongoose;
-	this._name 		= config.name;
+	this._name 		= pkg_config.name;
 
-	console.log('initializing ' + this._name);
-}
+	console.log('initializing ' + this._name + ' package');
+};
 
-//Get a new package instance
-var users		= new Users();
+//Inherit from Package
+Users.super_ = Package;
+Users.prototype = Object.create(Package.prototype, {
+    constructor: {
+        value: Users,
+        enumerable: false
+    }
+});
+
+var users = new Users(pkg_config);
 
 /**
 * How to interract with the db *
+
+//The next 3 lines have been abstracted up to the main app instance
+var dbResource	= require('./../../config/db');
+this.db 		= dbResource.db;
+this.mongoose 	= dbResource.mongoose;
 
 //Define the package schema
 users.schema = new users.mongoose.Schema({ 

@@ -4,18 +4,26 @@
 ** so it can be generated from the command line instead of hard coded.
 */
 
-var express        	= require('express');
-var router          = express.Router();
+var Package 	 	= require(__dirname + '/../../framework/Package');
+var fs 				= require("fs");
+var pkg_config 		= JSON.parse(fs.readFileSync(__dirname + "/package.json"));
+var router;
 
-var Activities 		= function(){
-	var self 		= this;
-	self._name 		= 'activities';
-	console.log('initializing ' + this._name);
-
-	router.route('/')
-	.get(function(req, res){
-		res.send('finding ' + self._name);
-	});
+var Activities 		= function(pkg_config){
+	router 			= require('./server/routes')(this);
+	this._name 		= pkg_config.name;
+	console.log('initializing ' + this._name + ' package');
 }
 
-module.exports = {'router': router, 'instance': new Activities()};
+//Inherit from Package
+Activities.super_ = Package;
+Activities.prototype = Object.create(Package.prototype, {
+    constructor: {
+        value: Activities,
+        enumerable: false
+    }
+});
+
+var activities 		= new Activities(pkg_config);
+
+module.exports = {'router': router, 'instance': activities };

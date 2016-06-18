@@ -1,18 +1,15 @@
 
-console.log('users routes file');
+var express = require('express');
+var router;
 
-module.exports = function(package) {
-    //API routes
-    var router      = package.router;
+function routes(self){
+    router = express.Router();
+    router.route('/')
+    .get(function(req, res){
+        res.send(self._name + ' routes file');
+    });
 
-    // var usersRoute  = router.route('/users');
-    // 	usersRoute.get(function(req, res){
-    //     	res.send('finding users');
-    // 	});
+    return router;
+}
 
-    //Frontend / Angular Routes - all other routes get sent here for angular to process
-    // app.get('*', function(req, res) {
-    //     console.log(__dirname);
-    //     res.sendfile('../public/views/index.html'); // load our public/index.html file
-    // });
-};
+module.exports = routes;
