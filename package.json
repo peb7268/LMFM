@@ -8,9 +8,13 @@
     "LMFM": "commands/index.js"
   },
   "scripts": {
-    "start": "nodemon server",
+    "lint": "jshint **.js",
+    "build": "browserify index.js > myproject.min.js",
     "test": "karma start",
-     "env": "env"
+    "env": "env",
+    "start": "nodemon server",
+    "prepublish": "npm run build # also runs npm run prebuild",
+    "prebuild": "npm run test # also runs npm run pretest"
   },
   "author": "",
   "license": "ISC",
@@ -23,6 +27,8 @@
   },
   "devDependencies": {
     "bower": "^1.5.3",
+    "chai-webdriver": "^1.2.0",
+    "jshint": "latest",
     "karma": "^0.13.22",
     "karma-chai": "^0.1.0",
     "karma-chrome-launcher": "^1.0.1",
@@ -31,6 +37,7 @@
     "karma-mocha": "^1.0.1",
     "karma-phantomjs-launcher": "^1.0.0",
     "mocha": "^2.5.3",
-    "phantomjs-prebuilt": "^2.1.7"
+    "phantomjs-prebuilt": "^2.1.7",
+    "selenium-webdriver": "^2.53.2"
   }
 }

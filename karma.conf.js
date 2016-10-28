@@ -23,7 +23,7 @@ module.exports = function(config) {
         'karma-chai'
     ],
 
-    browsers: ['PhantomJS']
-    //browsers: ['Chrome', 'Firefox']
+    //browsers: ['PhantomJS']
+    browsers: ['Chrome', 'Firefox']
   });
 };

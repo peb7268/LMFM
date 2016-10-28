@@ -11,9 +11,10 @@ to mount seperate instances of express into the main app to keep track of their
 own configs seperate.
 
 ##Need to haves
+- Convert to using angular 2 and angular cli
 - view engines
 - css preprocessors
-- Implement Gulp build system w/ compartmentalized scoping of builds & watches
+- Move to an NPM build system
 - Integrate JWT's
 
 ##Nice To haves
